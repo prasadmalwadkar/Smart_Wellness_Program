@@ -1,0 +1,60 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+ 
+
+ {% for message in messages  %}            
+      <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert" style="opacity:5">
+            <strong>Message : </strong> {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      {% endfor %}  
+
+      <br><br><br><br>
+<div class="container">
+  <div class="row" >
+    
+    <div class="panel panel-primary col-md-20 " style="margin-left:15%" >
+      <div class="panel-heading" style="text-align:center;">
+        <h3 class="panel-title">Messages</h3>
+      </div>
+      <table class="table table-hover" id="dev-table" >
+        <thead>
+          <tr>
+            <th>Sr No.</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Time</th>
+
+          </tr>
+        </thead>
+        {% for c in message1 %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td> {{c.name}}</td>
+          <td>{{c.phone}}</td>
+          <td>{{c.email}}</td>
+          <td>{{c.content}}</td>
+          <td>{{c.timestamp}}</td>
+
+          <td bgcolor="white"><a class="btn-sm btn-danger" href="/Contactdelete?delt={{c.id}}"
+            role="button">Delete</a></td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+
+
+
+{% endblock content %}
